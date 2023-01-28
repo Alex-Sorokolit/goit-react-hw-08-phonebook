@@ -1,0 +1,14 @@
+.contact_wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.contact__name {
+  margin: 0;
+}
+
+.contact__Button {
+  margin-left: auto;
+  min-height: 20px;
+  padding: 5px;
+}
