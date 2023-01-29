@@ -2,8 +2,8 @@
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 // імпорт генератор екшену
-import { addContact } from 'redux/operations';
-import { selectContacts } from 'redux/selectors';
+import { addContact } from 'redux/contacts/contacts-operations';
+import { selectContacts } from 'redux/contacts/contacts-selectors';
 
 export default function ContactForm() {
   const contacts = useSelector(selectContacts);
