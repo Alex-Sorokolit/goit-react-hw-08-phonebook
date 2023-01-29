@@ -1,22 +1,19 @@
+import { Route, Routes } from 'react-router-dom';
 // React
 import { useEffect } from 'react';
 // Redux
 import { useDispatch } from 'react-redux';
 import { fetchContacts } from 'redux/contacts/contacts-operations';
-import { useSelector } from 'react-redux';
-import {
-  selectError,
-  selectIsLoading,
-} from 'redux/contacts/contacts-selectors';
 // Components
-import ContactForm from './ContactForm';
-import Filter from './Filter';
-import ContactList from './ContactList';
+import { Home } from 'pages/home';
+import { Layout } from './Layout/Layout';
+import { Register } from 'pages/Register';
+import { Login } from 'pages/Lodin';
+
+// Components
 
 export function App() {
   const dispatch = useDispatch();
-  const isLoading = useSelector(selectIsLoading);
-  const error = useSelector(selectError);
 
   // запит всіх контактів при монтуванні App
   useEffect(() => {
@@ -24,15 +21,13 @@ export function App() {
   }, [dispatch]);
 
   return (
-    <div>
-      <h1>Phonebook</h1>
-      <ContactForm />
-      <h2>Contacts</h2>
-      <>
-        {isLoading && !error && <b>Request in progress...</b>}
-        <Filter />
-        <ContactList />
-      </>
-    </div>
+    <Routes>
+      <Route path="/" element={<Layout />}>
+        <Route index element={<Home />}></Route>
+        <Route path="/register" element={<Register />}></Route>
+        <Route path="/login" element={<Login />}></Route>
+        <Route path="/contacts" element={<div>ContactsPage</div>}></Route>
+      </Route>
+    </Routes>
   );
 }
