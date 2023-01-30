@@ -3,3 +3,16 @@
   align-items: center;
   gap: 20px;
 }
+
+.logout {
+  color: white;
+  background-color: red;
+  text-decoration: none;
+  padding: 5px;
+  min-width: 50px;
+  border-radius: 4px;
+  border: none;
+}
+.logout:hover {
+  scale: 1.1;
+}

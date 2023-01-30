@@ -1,24 +1,23 @@
 import { Route, Routes } from 'react-router-dom';
 // React
-import { useEffect } from 'react';
+// import { useEffect } from 'react';
 // Redux
-import { useDispatch } from 'react-redux';
-import { fetchContacts } from 'redux/contacts/contacts-operations';
+// import { useDispatch } from 'react-redux';
+// import { fetchContacts } from 'redux/contacts/contacts-operations';
 // Components
 import { Home } from 'pages/home';
 import { Layout } from './Layout/Layout';
 import { Register } from 'pages/Register';
-import { Login } from 'pages/Lodin';
+import { Login } from 'pages/Login';
 
 // Components
-
 export function App() {
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
   // запит всіх контактів при монтуванні App
-  useEffect(() => {
-    dispatch(fetchContacts());
-  }, [dispatch]);
+  // useEffect(() => {
+  //   dispatch(fetchContacts());
+  // }, [dispatch]);
 
   return (
     <Routes>

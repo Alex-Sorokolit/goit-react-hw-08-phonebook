@@ -16,19 +16,29 @@ import {
 // Slices
 import { contactsReducer } from './contacts/contacts-slice';
 import { filterReducer } from './filter/filter-slice';
+import { authReducer } from './auth/auth-slice';
 
-const persistConfig = {
-  key: 'root',
+const persistContactsConfig = {
+  key: 'contacts',
   storage,
 };
+const persistAuthConfig = {
+  key: 'auth',
+  storage,
+  whitelist: ['token'],
+};
 
-const persistedContactsReducer = persistReducer(persistConfig, contactsReducer);
+const persistedContactsReducer = persistReducer(
+  persistContactsConfig,
+  contactsReducer
+);
+const persistTokenReducer = persistReducer(persistAuthConfig, authReducer);
 
 export const store = configureStore({
   reducer: {
     contacts: persistedContactsReducer,
-    // contacts: contactsReducer,
     filter: filterReducer,
+    auth: persistTokenReducer,
   },
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware({
