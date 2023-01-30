@@ -11,7 +11,7 @@ export const selectVisibleContacts = createSelector(
   (contacts, filter) => {
     // const contacts = selectContacts(state);
     // const filter = selectFilter(state);
-    console.log('selectVisibleContacts');
+    // console.log('selectVisibleContacts');
     const normalizedFilter = filter.toLowerCase();
     return contacts.filter(contact =>
       contact.name.toLowerCase().includes(normalizedFilter)

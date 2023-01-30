@@ -10,7 +10,7 @@ const token = {
     axios.defaults.headers.common.Authorization = `Bearer ${token}`;
   },
   // Скидає токен
-  unset() {
+  clear() {
     axios.defaults.headers.common.Authorization = '';
   },
 };
@@ -44,7 +44,30 @@ export const logOut = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
     await axios.post('/users/logout');
     // токен вже є у хедері, тому що юзер вже був залогінений
     // тому його потрібно обнулити
-    token.unset();
+    token.clear();
+  } catch (error) {
+    return thunkAPI.rejectWithValue(error.message);
+  }
+});
+
+export const reLogIn = createAsyncThunk('auth/relogin', async (_, thunkAPI) => {
+  // повертає весь redux state
+  // console.log(thunkAPI.getState());
+  const state = thunkAPI.getState();
+  const persistedToken = state.auth.token;
+  // console.log(persistedToken);
+
+  if (persistedToken === null) {
+    console.log('токена немає');
+    // якщо токена немає генеруємо reject
+    return thunkAPI.rejectWithValue();
+  }
+
+  token.set(persistedToken);
+  try {
+    const response = await axios.get('/users/current');
+    // console.log(response.data);
+    return response.data;
   } catch (error) {
     return thunkAPI.rejectWithValue(error.message);
   }

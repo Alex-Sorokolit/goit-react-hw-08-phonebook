@@ -1,9 +1,9 @@
 import { Route, Routes } from 'react-router-dom';
 // React
-// import { useEffect } from 'react';
+import { useEffect } from 'react';
 // Redux
-// import { useDispatch } from 'react-redux';
-// import { fetchContacts } from 'redux/contacts/contacts-operations';
+import { useDispatch } from 'react-redux';
+import { reLogIn } from 'redux/auth/auth-operations';
 // Components
 import { Home } from 'pages/home';
 import { Layout } from './Layout/Layout';
@@ -12,13 +12,13 @@ import { Login } from 'pages/Login';
 import { Contacts } from 'pages/Contacts';
 
 // Components
-export function App() {
-  // const dispatch = useDispatch();
+export const App = () => {
+  const dispatch = useDispatch();
 
-  // // запит всіх контактів при монтуванні App
-  // useEffect(() => {
-  //   dispatch(fetchContacts());
-  // }, [dispatch]);
+  //  логінимось при монтуванні App якщо є токен
+  useEffect(() => {
+    dispatch(reLogIn());
+  }, [dispatch]);
 
   return (
     <Routes>
@@ -30,4 +30,4 @@ export function App() {
       </Route>
     </Routes>
   );
-}
+};

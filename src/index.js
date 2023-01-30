@@ -12,13 +12,13 @@ import './index.css';
 import { PersistGate } from 'redux-persist/integration/react';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
-    <PersistGate loading={null} persistor={persistor}>
-      <Provider store={store}>
-        <BrowserRouter>
-          <App />
-        </BrowserRouter>
-      </Provider>
-    </PersistGate>
-  </React.StrictMode>
+  // <React.StrictMode>
+  <PersistGate loading={null} persistor={persistor}>
+    <Provider store={store}>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </Provider>
+  </PersistGate>
+  // </React.StrictMode>
 );
