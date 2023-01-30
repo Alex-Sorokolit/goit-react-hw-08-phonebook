@@ -9,12 +9,13 @@ import { Home } from 'pages/home';
 import { Layout } from './Layout/Layout';
 import { Register } from 'pages/Register';
 import { Login } from 'pages/Login';
+import { Contacts } from 'pages/Contacts';
 
 // Components
 export function App() {
   // const dispatch = useDispatch();
 
-  // запит всіх контактів при монтуванні App
+  // // запит всіх контактів при монтуванні App
   // useEffect(() => {
   //   dispatch(fetchContacts());
   // }, [dispatch]);
@@ -25,7 +26,7 @@ export function App() {
         <Route index element={<Home />}></Route>
         <Route path="/register" element={<Register />}></Route>
         <Route path="/login" element={<Login />}></Route>
-        <Route path="/contacts" element={<div>ContactsPage</div>}></Route>
+        <Route path="/contacts" element={<Contacts />}></Route>
       </Route>
     </Routes>
   );

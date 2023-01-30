@@ -17,7 +17,7 @@ export default function ContactForm() {
     event.preventDefault();
     const form = event.target;
     const name = form.name.value;
-    const phone = form.number.value;
+    const number = form.number.value;
     const isInContacts = checkIsInContacts(name);
 
     // не додаємо контакт
@@ -27,7 +27,7 @@ export default function ContactForm() {
     }
 
     // викликаємо генератор екшену та передаємо текст завдання для поля payload
-    dispatch(addContact({ name, phone }));
+    dispatch(addContact({ name, number }));
 
     // Очистка форми
     form.reset();

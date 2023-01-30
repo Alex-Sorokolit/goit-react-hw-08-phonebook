@@ -39,7 +39,7 @@ export const logIn = createAsyncThunk('auth/login', async (user, thunkAPI) => {
   }
 });
 
-export const logOut = createAsyncThunk('auth/logout', async thunkAPI => {
+export const logOut = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
   try {
     await axios.post('/users/logout');
     // токен вже є у хедері, тому що юзер вже був залогінений
