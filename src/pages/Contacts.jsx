@@ -5,7 +5,7 @@ import { fetchContacts } from 'redux/contacts/contacts-operations';
 import ContactForm from 'components/ContactForm';
 import Filter from 'components/Filter';
 
-export const Contacts = () => {
+const Contacts = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -24,3 +24,5 @@ export const Contacts = () => {
     </div>
   );
 };
+
+export default Contacts;
