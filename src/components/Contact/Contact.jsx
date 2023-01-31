@@ -9,7 +9,7 @@ export const Contact = ({ contact }) => {
   return (
     <div className="contact_wrapper">
       <p className="contact__name">
-        {contact.name}: {contact.phone}
+        {contact.name}: {contact.number}
       </p>
       <button className="contact__button" type="buttone" onClick={handleDelete}>
         Remove
