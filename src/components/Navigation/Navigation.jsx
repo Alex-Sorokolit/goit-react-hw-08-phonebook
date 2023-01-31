@@ -3,8 +3,12 @@ import css from './Navigation.module.css';
 export const Navigation = () => {
   return (
     <div className={css.wrapper}>
-      <NavLink to="/">Home</NavLink>
-      <NavLink to="/contacts">Contacts</NavLink>
+      <NavLink to="/" className={css.menuItem}>
+        Home
+      </NavLink>
+      <NavLink to="/contacts" className={css.menuItem}>
+        Contacts
+      </NavLink>
     </div>
   );
 };

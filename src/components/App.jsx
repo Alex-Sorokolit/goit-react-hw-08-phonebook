@@ -2,10 +2,11 @@ import { Route, Routes } from 'react-router-dom';
 // React
 import { useEffect, lazy, Suspense } from 'react';
 // Redux
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { reLogIn } from 'redux/auth/auth-operations';
 // Components
 import { Layout } from './Layout/Layout';
+import { selectIsReLogIn } from 'redux/auth/auth-selectors';
 // Routes
 import { PrivateRoute } from './PrivateRoute';
 import { RestrictedRoute } from './RestrictedRoute';
@@ -17,13 +18,17 @@ const Contacts = lazy(() => import('../pages/Contacts'));
 
 export const App = () => {
   const dispatch = useDispatch();
+  const loadingUser = useSelector(selectIsReLogIn);
 
   //  логінимось при монтуванні App якщо є токен
   useEffect(() => {
     dispatch(reLogIn());
   }, [dispatch]);
 
-  return (
+  // розмітка зарендериться після того як виконається запит за юзером
+  return loadingUser ? (
+    <h2>Loading...</h2>
+  ) : (
     <Suspense fallback={<div>loading...</div>}>
       <Routes>
         <Route path="/" element={<Layout />}>
