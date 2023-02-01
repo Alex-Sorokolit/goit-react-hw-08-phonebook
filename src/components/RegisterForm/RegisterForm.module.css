@@ -34,3 +34,7 @@
 .input:not(:placeholder-shown):required:invalid {
   border-color: red;
 }
+.ErrorMessage {
+  font-size: 20px;
+  color: red;
+}

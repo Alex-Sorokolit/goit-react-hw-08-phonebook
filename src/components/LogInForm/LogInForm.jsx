@@ -55,8 +55,8 @@ export const LogInForm = () => {
             minLength="7"
             maxLength="12"
             placeholder=" "
-            pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$"
-            title="Example: Xn2isL0"
+            // pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$"
+            // title="Example: Xn2isL0"
           ></input>
         </label>
         <SubmitBtn>LogIn</SubmitBtn>

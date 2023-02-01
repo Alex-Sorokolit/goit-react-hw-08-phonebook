@@ -1,19 +1,35 @@
 import { useDispatch } from 'react-redux';
 import { deleteContact } from 'redux/contacts/contacts-operations';
-import './Contact.css';
+import { useSelector } from 'react-redux';
+import { selectIsLoading } from 'redux/contacts/contacts-selectors';
+import css from './Contact.module.css';
 
 export const Contact = ({ contact }) => {
   const dispatch = useDispatch();
-
-  const handleDelete = () => dispatch(deleteContact(contact.id));
+  const classNames = ['css.deleteBtn'];
+  const loading = useSelector(selectIsLoading);
+  if (loading) classNames.push('css.disabled');
+  const handleDelete = ({}) => dispatch(deleteContact(contact.id));
   return (
-    <div className="contact_wrapper">
-      <p className="contact__name">
+    <div className={css.wrapper}>
+      <p className={css.name}>
         {contact.name}: {contact.number}
       </p>
-      <button className="contact__button" type="buttone" onClick={handleDelete}>
+      <button
+        className={classNames.join(' ')}
+        type="buttone"
+        onClick={handleDelete}
+      >
         Remove
       </button>
     </div>
   );
 };
+
+// export const Alert = ({ variant, outlined, elevated, children }) => {
+//   const classNames = ['alert', variant];
+//   if (outlined) classNames.push('is-outlined');
+//   if (elevated) classNames.push('is-elevated');
+
+//   return <p className={classNames.join(' ')}>{children}</p>;
+// };

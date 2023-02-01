@@ -1,13 +1,13 @@
-.contact_wrapper {
+.wrapper {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-.contact__name {
+.name {
   margin: 0;
 }
 
-.contact__Button {
+.deleteBtn {
   margin-left: auto;
   min-height: 20px;
   padding: 5px;
