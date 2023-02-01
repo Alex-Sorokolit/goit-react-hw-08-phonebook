@@ -1,4 +1,4 @@
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, Navigate } from 'react-router-dom';
 // React
 import { useEffect, lazy, Suspense } from 'react';
 // Redux
@@ -50,12 +50,16 @@ export const App = () => {
           ></Route>
           <Route
             path="/contacts"
-            element={
-              <PrivateRoute component={<Contacts />} redirectTo="/login" />
-            }
+            element={<PrivateRoute component={<Contacts />} bctTo="/login" />}
           ></Route>
         </Route>
+        <Route path="*" element={<Navigate to="/" />} />
       </Routes>
     </Suspense>
   );
 };
+
+// Заборонити відправляти запити поки не виконався перший
+// Додати isLoading
+// Стилізувати
+// Додати валідацію форми

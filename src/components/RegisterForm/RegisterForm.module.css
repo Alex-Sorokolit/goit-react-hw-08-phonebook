@@ -7,3 +7,30 @@
   flex-direction: column;
   margin-bottom: 16px;
 }
+.label:focus-within {
+  color: #2196f3;
+}
+
+.description {
+  font-size: small;
+  color: grey;
+  padding: 0;
+  margin: 0 0 3px 0;
+}
+
+.input {
+  padding: 8px;
+  border: 2px solid #2a2a2a;
+  /* border-radius: 4px; */
+  font-family: inherit;
+  font-size: 16px;
+  outline: none;
+}
+
+.input:not(:placeholder-shown):required:valid {
+  border-color: green;
+}
+
+.input:not(:placeholder-shown):required:invalid {
+  border-color: red;
+}
