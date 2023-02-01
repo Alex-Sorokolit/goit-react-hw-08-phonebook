@@ -1,0 +1,1 @@
+{"version":3,"file":"static/js/415.0542bb42.chunk.js","mappings":"4JAIA,UAJa,WACX,OAAO,wDACR,C","sources":["pages/Home.jsx"],"sourcesContent":["const Home = () => {\n  return <h1>Wellcome to Contacts Secvice</h1>;\n};\n\nexport default Home;\n"],"names":[],"sourceRoot":""}
