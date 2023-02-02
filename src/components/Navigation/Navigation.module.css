@@ -1,9 +1,5 @@
 .wrapper {
+  margin-top: 30px;
   display: flex;
-
   gap: 20px;
-}
-.menuItem {
-  text-decoration: none;
-  color: black;
 }

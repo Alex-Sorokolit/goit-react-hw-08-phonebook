@@ -1,14 +1,22 @@
 import { useDispatch, useSelector } from 'react-redux';
 import css from './RegisterForm.module.css';
 import { register } from 'redux/auth/auth-operations';
-import { SubmitBtn } from 'components/SubmitBtn/SubmitBtn';
+import { Button } from 'components/Button/Button';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
-import { selectError } from 'redux/auth/auth-selectors';
+import { selectIsLoading, selectError } from 'redux/auth/auth-selectors';
+import BarLoader from 'react-spinners/BarLoader';
+import { reLogIn } from 'redux/auth/auth-operations';
+import { useEffect } from 'react';
 
 export const RegisterForm = () => {
   const dispatch = useDispatch();
   const error = useSelector(selectError);
+  const isLoading = useSelector(selectIsLoading);
+
+  useEffect(() => {
+    dispatch(reLogIn());
+  }, [dispatch]);
 
   // початковий стан для formik
   const formikInitialValue = {
@@ -35,7 +43,8 @@ export const RegisterForm = () => {
   });
 
   return (
-    <div>
+    <div className={css.formCard}>
+      <h2>Register</h2>
       <Formik
         initialValues={formikInitialValue}
         validationSchema={validationSchema}
@@ -59,7 +68,11 @@ export const RegisterForm = () => {
                 placeholder=" "
                 // pattern="^[a-zA-Z]+\s[a-zA-Z]+$"
               />
-              <ErrorMessage name="name" />
+              <ErrorMessage
+                name="name"
+                component="p"
+                className={css.inputError}
+              />
             </label>
             <label className={css.label}>
               Email
@@ -70,7 +83,11 @@ export const RegisterForm = () => {
                 required
                 placeholder=" "
               />
-              <ErrorMessage name="email" />
+              <ErrorMessage
+                name="email"
+                component="p"
+                className={css.inputError}
+              />
             </label>
             <label className={css.label}>
               Password
@@ -83,12 +100,19 @@ export const RegisterForm = () => {
                 maxLength="16"
                 placeholder=" "
               />
-              <ErrorMessage name="password" />
+              <ErrorMessage
+                name="password"
+                component="p"
+                className={css.inputError}
+              />
             </label>
-            <SubmitBtn>Register</SubmitBtn>
+            <Button>Register</Button>
           </Form>
         )}
       </Formik>
+
+      {isLoading && !error && <BarLoader color="#5ac846" width="100%" />}
+
       {error && (
         <p className={css.ErrorMessage}>
           Error, this email is already registered

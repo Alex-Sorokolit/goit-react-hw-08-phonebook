@@ -2,10 +2,9 @@ import { RegisterForm } from 'components/RegisterForm/RegisterForm';
 
 const Register = () => {
   return (
-    <div>
-      <h2>Registration</h2>
+    <section>
       <RegisterForm />
-    </div>
+    </section>
   );
 };
 

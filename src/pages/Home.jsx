@@ -1,5 +1,10 @@
+import '../index.css';
 const Home = () => {
-  return <h1>Wellcome to Contacts Secvice</h1>;
+  return (
+    <section>
+      <h1 className="title">Wellcome to Contacts Secvice</h1>
+    </section>
+  );
 };
 
 export default Home;

@@ -8,6 +8,8 @@ import {
   selectError,
   selectIsLoading,
 } from 'redux/contacts/contacts-selectors';
+import BarLoader from 'react-spinners/BarLoader';
+import css from './Contacts.module.css';
 
 const Contacts = () => {
   const dispatch = useDispatch();
@@ -19,15 +21,19 @@ const Contacts = () => {
   }, [dispatch]);
 
   return (
-    <div>
-      <h1>Phonebook</h1>
-
-      <h2>Add Contact</h2>
-      <ContactForm />
-      <h2>Contacts</h2>
-      <Filter />
-      {isLoading && !error ? <p>Request in progress...</p> : <ContactList />}
-    </div>
+    <>
+      <section className={css.contacts}>
+        <ContactForm />
+        <Filter />
+      </section>
+      <section>
+        {isLoading && !error ? (
+          <BarLoader color="#5ac846" width="100%" />
+        ) : (
+          <ContactList />
+        )}
+      </section>
+    </>
   );
 };
 

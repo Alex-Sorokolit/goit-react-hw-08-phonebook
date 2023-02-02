@@ -7,6 +7,7 @@ import { reLogIn } from 'redux/auth/auth-operations';
 // Components
 import { Layout } from './Layout/Layout';
 import { selectIsReLogIn } from 'redux/auth/auth-selectors';
+import BarLoader from 'react-spinners/BarLoader';
 // Routes
 import { PrivateRoute } from './PrivateRoute';
 import { RestrictedRoute } from './RestrictedRoute';
@@ -27,9 +28,9 @@ export const App = () => {
 
   // розмітка зарендериться після того як виконається запит за юзером
   return loadingUser ? (
-    <h2>Loading...</h2>
+    <BarLoader color="#5ac846" width="100%" />
   ) : (
-    <Suspense fallback={<div>loading...</div>}>
+    <Suspense fallback={<BarLoader color="#5ac846" width="100%" />}>
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />}></Route>
@@ -50,7 +51,9 @@ export const App = () => {
           ></Route>
           <Route
             path="/contacts"
-            element={<PrivateRoute component={<Contacts />} bctTo="/login" />}
+            element={
+              <PrivateRoute component={<Contacts />} redirectTo="/login" />
+            }
           ></Route>
         </Route>
         <Route path="*" element={<Navigate to="/" />} />
@@ -63,3 +66,5 @@ export const App = () => {
 // Додати isLoading
 // Стилізувати
 // Додати валідацію форми
+// Семантичні теги
+// Форма логіна валідація

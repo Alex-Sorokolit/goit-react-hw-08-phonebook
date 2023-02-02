@@ -4,6 +4,8 @@ import { useSelector } from 'react-redux';
 // імпорт генератор екшену
 import { addContact } from 'redux/contacts/contacts-operations';
 import { selectContacts } from 'redux/contacts/contacts-selectors';
+import css from './ContactForm.module.css';
+import { Button } from 'components/Button/Button';
 
 export default function ContactForm() {
   const contacts = useSelector(selectContacts);
@@ -34,31 +36,37 @@ export default function ContactForm() {
   };
 
   return (
-    <>
-      <form onSubmit={handleSubmit}>
-        <label>
+    <div className={css.formCard}>
+      <h2>New Contact</h2>
+      <form onSubmit={handleSubmit} className={css.form}>
+        <label className={css.label}>
           Name
           <input
+            className={css.input}
             type="text"
             name="name"
             pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
             title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
+            placeholder=" "
             required
+            autoFocus
           />
         </label>
 
-        <label>
+        <label className={css.label}>
           Phone
           <input
+            className={css.input}
             type="tel"
             name="number"
             pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
             title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
+            placeholder=" "
             required
           />
         </label>
-        <button type="submit">Add contact</button>
+        <Button type="submit">Add</Button>
       </form>
-    </>
+    </div>
   );
 }

@@ -8,9 +8,9 @@ import { useSelector } from 'react-redux';
 export const AppBar = () => {
   const isLoggedIn = useSelector(selectIsLoggedIn);
   return (
-    <div className={css.wrapper}>
+    <header className={css.header}>
       <Navigation />
       {isLoggedIn ? <UserMenu /> : <AuthNav />}
-    </div>
+    </header>
   );
 };

@@ -1,10 +1,20 @@
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import css from './LogInForm.module.css';
 import { logIn } from 'redux/auth/auth-operations';
-import { SubmitBtn } from 'components/SubmitBtn/SubmitBtn';
+import { Button } from 'components/Button/Button';
+import { selectIsLoading, selectError } from 'redux/auth/auth-selectors';
+import BarLoader from 'react-spinners/BarLoader';
+import { useEffect } from 'react';
+import { reLogIn } from 'redux/auth/auth-operations';
 
 export const LogInForm = () => {
   const dispatch = useDispatch();
+  const error = useSelector(selectError);
+  const isLoading = useSelector(selectIsLoading);
+
+  useEffect(() => {
+    dispatch(reLogIn());
+  }, [dispatch]);
 
   const handleSubmit = event => {
     event.preventDefault();
@@ -20,7 +30,8 @@ export const LogInForm = () => {
   };
 
   return (
-    <div>
+    <div className={css.formCard}>
+      <h2>Login</h2>
       <form
         className={css.form}
         onSubmit={handleSubmit}
@@ -29,7 +40,7 @@ export const LogInForm = () => {
       >
         <label className={css.label}>
           Email
-          <p className={css.description}>Enter E-mail address</p>
+          {/* <p className={css.description}>Enter E-mail address</p> */}
           <input
             className={css.input}
             type="email"
@@ -43,10 +54,10 @@ export const LogInForm = () => {
         </label>
         <label className={css.label}>
           Password
-          <p className={css.description}>
+          {/* <p className={css.description}>
             Must have at least 7 characters (1 character uppercase , 1 lowercase
             and 1 number)
-          </p>
+          </p> */}
           <input
             className={css.input}
             type="password"
@@ -59,8 +70,14 @@ export const LogInForm = () => {
             // title="Example: Xn2isL0"
           ></input>
         </label>
-        <SubmitBtn>LogIn</SubmitBtn>
+        {error && (
+          <p className={css.errorMessage}>
+            Email or Password entered incorrectly
+          </p>
+        )}
+        <Button>LogIn</Button>
       </form>
+      {isLoading && !error && <BarLoader color="#5ac846" width="100%" />}
     </div>
   );
 };

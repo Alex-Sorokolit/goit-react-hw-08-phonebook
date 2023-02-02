@@ -2,31 +2,26 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 24px;
-  width: 400px;
+  padding: 5px 24px;
+  width: 100%;
   background: #3b455723;
   border-radius: 16px;
 }
-
 .form {
-  width: 320px;
+  width: 100%;
 }
-
 .label {
+  position: relative;
   display: flex;
   flex-direction: column;
   margin-bottom: 16px;
+  width: 100%;
 }
 .label:focus-within {
-  color: rgb(90, 200, 70);
-}
-.description {
-  font-size: small;
-  color: grey;
-  padding: 0;
-  margin: 0 0 3px 0;
+  color: #5ac846;
 }
 .input {
+  width: 100%;
   padding: 8px;
   color: white;
   font-family: inherit;
@@ -45,8 +40,15 @@
 .input:not(:placeholder-shown):required:invalid {
   border-color: red;
 }
-
-.errorMessage {
-  margin: 10px 0;
+.ErrorMessage {
+  font-size: 20px;
   color: red;
+}
+
+.findIcon {
+  font-size: 20px;
+  position: absolute;
+  top: 70%;
+  right: 1.5%;
+  transform: translate(-50%, -50%);
 }
