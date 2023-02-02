@@ -2,7 +2,6 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { register } from 'redux/auth/auth-operations';
-import { Button } from 'components/Button/Button';
 // Validation
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
@@ -10,6 +9,8 @@ import * as Yup from 'yup';
 import { Button } from 'components/Button/Button';
 import { reLogIn } from 'redux/auth/auth-operations';
 import BarLoader from 'react-spinners/BarLoader';
+import { selectError } from 'redux/auth/auth-selectors';
+import { selectIsLoading } from 'redux/auth/auth-selectors';
 // Styles
 import css from './RegisterForm.module.css';
 
