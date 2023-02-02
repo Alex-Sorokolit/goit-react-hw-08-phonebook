@@ -2,6 +2,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import css from './RegisterForm.module.css';
 import { register } from 'redux/auth/auth-operations';
 import { Button } from 'components/Button/Button';
+// Validation
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import { selectIsLoading, selectError } from 'redux/auth/auth-selectors';
@@ -13,17 +14,16 @@ export const RegisterForm = () => {
   const dispatch = useDispatch();
   const error = useSelector(selectError);
   const isLoading = useSelector(selectIsLoading);
-
-  useEffect(() => {
-    dispatch(reLogIn());
-  }, [dispatch]);
-
   // початковий стан для formik
   const formikInitialValue = {
     name: '',
     email: '',
     password: '',
   };
+
+  useEffect(() => {
+    dispatch(reLogIn());
+  }, [dispatch]);
 
   const onSubmit = (values, actions) => {
     console.log(values);
@@ -95,10 +95,10 @@ export const RegisterForm = () => {
                 className={css.input}
                 type="password"
                 name="password"
-                required
                 minLength="7"
                 maxLength="16"
                 placeholder=" "
+                required
               />
               <ErrorMessage
                 name="password"
