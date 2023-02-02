@@ -115,7 +115,7 @@ export const RegisterForm = () => {
 
       {error && (
         <p className={css.ErrorMessage}>
-          Error, this email is already registered
+          Error, this email address is invalid or already registered
         </p>
       )}
     </div>
