@@ -2,8 +2,8 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { register } from 'redux/auth/auth-operations';
-import { selectIsLoading, selectError } from 'redux/auth/auth-selectors';
-// validation
+import { Button } from 'components/Button/Button';
+// Validation
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 // Components
@@ -98,10 +98,10 @@ export const RegisterForm = () => {
                 className={css.input}
                 type="password"
                 name="password"
-                required
                 minLength="7"
                 maxLength="16"
                 placeholder=" "
+                required
               />
               <ErrorMessage
                 name="password"
@@ -118,7 +118,7 @@ export const RegisterForm = () => {
 
       {error && (
         <p className={css.ErrorMessage}>
-          Error, this email is already registered
+          Error, this email address is invalid or already registered
         </p>
       )}
     </div>

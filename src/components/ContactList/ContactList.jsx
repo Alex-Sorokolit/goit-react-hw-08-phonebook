@@ -24,7 +24,7 @@ const ContactList = () => {
           </p>
         )}
         {visibleContacts.length === 0 && filterData !== '' && (
-          <p className={css.message}>no mutch</p>
+          <p className={css.message}>no mutches</p>
         )}
       </ul>
     </div>

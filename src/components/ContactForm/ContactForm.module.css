@@ -12,16 +12,16 @@
   flex-direction: column;
   width: 100%;
   display: flex;
-  align-items: flex-end;
-  gap: 20px;
+  align-items: stretch;
+  gap: 10px;
   justify-content: center;
 }
 
-@media screen and (min-width: 480px) {
+/* @media screen and (min-width: 480px) {
   .form {
     flex-direction: row;
   }
-}
+} */
 .label {
   display: flex;
   flex-direction: column;
@@ -53,4 +53,10 @@
 .ErrorMessage {
   font-size: 20px;
   color: red;
+}
+
+.btnWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
