@@ -1,15 +1,24 @@
-// імпорт dispatch
-import { useDispatch } from 'react-redux';
-import { useSelector } from 'react-redux';
-// імпорт генератор екшену
+// React/redux
+import { useDispatch, useSelector } from 'react-redux';
 import { addContact } from 'redux/contacts/contacts-operations';
 import { selectContacts } from 'redux/contacts/contacts-selectors';
-import css from './ContactForm.module.css';
+// validation
+import { Formik, Form, Field, ErrorMessage } from 'formik';
+import * as Yup from 'yup';
+// Components
 import { Button } from 'components/Button/Button';
+// Styles
+import css from './ContactForm.module.css';
 
 export default function ContactForm() {
   const contacts = useSelector(selectContacts);
   const dispatch = useDispatch();
+  // початковий стан для formik
+  const formikInitialValue = {
+    name: '',
+    email: '',
+    password: '',
+  };
 
   const checkIsInContacts = newName =>
     contacts.some(({ name }) => name.toLowerCase() === newName.toLowerCase());

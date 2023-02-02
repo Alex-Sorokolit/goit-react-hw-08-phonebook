@@ -1,29 +1,32 @@
+// React/redux
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import css from './RegisterForm.module.css';
 import { register } from 'redux/auth/auth-operations';
-import { Button } from 'components/Button/Button';
+import { selectIsLoading, selectError } from 'redux/auth/auth-selectors';
+// validation
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
-import { selectIsLoading, selectError } from 'redux/auth/auth-selectors';
-import BarLoader from 'react-spinners/BarLoader';
+// Components
+import { Button } from 'components/Button/Button';
 import { reLogIn } from 'redux/auth/auth-operations';
-import { useEffect } from 'react';
+import BarLoader from 'react-spinners/BarLoader';
+// Styles
+import css from './RegisterForm.module.css';
 
 export const RegisterForm = () => {
   const dispatch = useDispatch();
   const error = useSelector(selectError);
   const isLoading = useSelector(selectIsLoading);
-
-  useEffect(() => {
-    dispatch(reLogIn());
-  }, [dispatch]);
-
   // початковий стан для formik
   const formikInitialValue = {
     name: '',
     email: '',
     password: '',
   };
+
+  useEffect(() => {
+    dispatch(reLogIn());
+  }, [dispatch]);
 
   const onSubmit = (values, actions) => {
     console.log(values);
