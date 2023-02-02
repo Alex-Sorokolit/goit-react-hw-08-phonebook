@@ -12,7 +12,7 @@ React. Мета проекту познайомитися із Redux (через
 
 ## Інтерфейс
 
-![Interface](./assets/Contacts_crop.jpeg) 
+![Interface](./assets/Contacts_crop.jpg) 
 
 Ідея додатку це записна книга. Користувач може
 зареєструватися, увійти під своїм email, зберегти контакти.
