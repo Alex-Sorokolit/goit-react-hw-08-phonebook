@@ -4,7 +4,7 @@ export const User = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  min-width: 120px;
+  ${'' /* min-width: 120px; */}
   text-decoration: none;
   color: inherit;
   font-style: normal;
@@ -15,6 +15,7 @@ export const User = styled.div`
   background-color: rgba(90, 200, 70, 0.2);
   border-radius: 8px 8px 0px 0px;
   padding: 5px;
+  padding-left: 15px;
 
   &.active {
     background-color: rgba(90, 200, 70, 0.8);

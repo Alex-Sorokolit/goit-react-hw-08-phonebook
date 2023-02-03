@@ -14,16 +14,27 @@ import { selectIsLoading } from 'redux/auth/auth-selectors';
 // Styles
 import css from './RegisterForm.module.css';
 
+// початковий стан для formik
+const formikInitialValue = {
+  name: '',
+  email: '',
+  password: '',
+};
+
+// Валідація
+const validationSchema = Yup.object().shape({
+  name: Yup.string().trim().required(),
+  email: Yup.string().trim().email().required(),
+  password: Yup.string()
+    .min(7, 'Password must contain at least 7 characters')
+    .max(16, 'Password must contain no more than 16 characters')
+    .required(),
+});
+
 export const RegisterForm = () => {
   const dispatch = useDispatch();
   const error = useSelector(selectError);
   const isLoading = useSelector(selectIsLoading);
-  // початковий стан для formik
-  const formikInitialValue = {
-    name: '',
-    email: '',
-    password: '',
-  };
 
   useEffect(() => {
     dispatch(reLogIn());
@@ -35,16 +46,6 @@ export const RegisterForm = () => {
     dispatch(register(values));
     actions.resetForm();
   };
-
-  // Валідація
-  const validationSchema = Yup.object().shape({
-    name: Yup.string().trim().required(),
-    email: Yup.string().trim().email().required(),
-    password: Yup.string()
-      .min(7, 'Password must contain at least 7 characters')
-      .max(16, 'Password must contain no more than 16 characters')
-      .required(),
-  });
 
   return (
     <div className={css.formCard}>
